@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>iHub Smart Router</title>
     <script type="text/javascript">
-        function smartRedirect() {
+        function forceRedirect() {
             var desktopURL = "https://sites.google.com/fosis.org.uk/iehubtestdesktop/home";
             var mobileURL = "https://sites.google.com/fosis.org.uk/iehubmobile/home";
 
-            // We use 900px to ensure tablets also get the mobile experience if preferred
-            var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            // 1. Check Width
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            
+            // 2. Check User Agent (Detects iPhones, Androids, etc)
+            var isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-            if (width <= 900) {
+            if (width <= 900 || isMobileDevice) {
                 window.location.replace(mobileURL);
             } else {
                 window.location.replace(desktopURL);
             }
         }
-        // Run immediately
-        smartRedirect();
+        forceRedirect();
     </script>
 </head>
-<body style="background: white; text-align: center; font-family: sans-serif; padding-top: 30vh;">
-    <div style="color: #0b0f19;">Loading your iHub experience...</div>
-    <!-- Manual Fallback -->
-    <noscript>
-        <a href="https://sites.google.com/fosis.org.uk/iehubmobile/home">Click here for Mobile</a>
-    </noscript>
+<body style="background: white; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+    <p style="font-family: sans-serif; color: #0b0f19;">Syncing iHub settings...</p>
 </body>
 </html>
