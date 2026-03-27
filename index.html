@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>iHub Redirecting...</title>
+    <script type="text/javascript">
+        function redirectUser() {
+            // Your two Google Sites URLs
+            var desktopURL = "https://sites.google.com/fosis.org.uk/iehubtestdesktop/home";
+            var mobileURL = "https://sites.google.com/fosis.org.uk/iehubmobile/home";
+
+            // Threshold for mobile (800px covers phones and small tablets)
+            if (window.innerWidth <= 800) {
+                window.location.replace(mobileURL);
+            } else {
+                window.location.replace(desktopURL);
+            }
+        }
+        // Run immediately on load
+        window.onload = redirectUser;
+    </script>
+    <!-- Fallback if JS is disabled -->
+    <noscript>
+        <p>Please select your version: 
+            <a href="https://sites.google.com/fosis.org.uk/iehubtestdesktop/home">Desktop</a> | 
+            <a href="https://sites.google.com/fosis.org.uk/iehubmobile/home">Mobile</a>
+        </p>
+    </noscript>
+</head>
+<body style="background-color: white; font-family: sans-serif; text-align: center; padding-top: 20%;">
+    <p>Loading the best experience for your device...</p>
+</body>
+</html>
